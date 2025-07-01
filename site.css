@@ -163,7 +163,7 @@ body {
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 500;
     transition: var(--transition);
     position: relative;
@@ -199,6 +199,149 @@ body {
 
 .hamburger:hover {
     color: var(--primary-color);
+}
+
+/* ====== Mobile Drawer Styles ====== */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 45%;
+        height: 100vh;
+        background: linear-gradient(
+            135deg, 
+            rgba(255, 255, 255, 0.98), 
+            rgba(248, 249, 250, 0.98)
+        );
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 20px 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-out;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 0;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .nav-links a {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        width: 100%;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a:hover {
+        background-color: rgba(37, 99, 235, 0.1);
+        border-radius: 8px;
+        color: var(--primary-color);
+    }
+
+    /* Remove old arrow */
+    .nav-links a::before {
+        content: '';
+    }
+
+    /* Custom icons for each nav item */
+    .nav-links a[href="#home"]::before {
+        content: '\f015'; /* Home */
+        color: #4a6fa5;
+    }
+    .nav-links a[href="#about"]::before {
+        content: '\f406'; /* User */
+        color: #4e937a;
+    }
+    .nav-links a[href="#experience"]::before {
+        content: '\f0b1'; /* Briefcase */
+        color: #b68f40;
+    }
+    .nav-links a[href="#skills"]::before {
+        content: '\f542'; /* Tools */
+        color: #9c4668;
+    }
+    .nav-links a[href="#education"]::before {
+        content: '\f19d'; /* Graduation cap */
+        color: #6a5acd;
+    }
+    .nav-links a[href="#contact"]::before {
+        content: '\f0e0'; /* Envelope */
+        color: #d4534f;
+    }
+
+    .nav-links a::before {
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        margin-right: 15px;
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+
+        /* NEW circular background styles */
+        background-color: #ffffff;
+        border-radius: 50%;
+        padding: 6px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        min-width: 30px;
+        min-height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+    .nav-links a:hover::before {
+        transform: scale(1.15);
+        color: var(--primary-color);
+    }
+
+
+    .hamburger {
+        display: block;
+        z-index: 1000;
+    }
+
+    .hamburger.active i::before {
+        content: '\f00d'; /* X icon when active */
+    }
+
+    /* Overlay when drawer is open */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
 }
 
 /* ====== Section Styles ====== */
@@ -308,7 +451,7 @@ section {
 .home-description {
     font-size: 1.1rem;
     line-height: 1.7;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: var(--text-color);
 }
 
@@ -412,6 +555,82 @@ section {
     }
 }
 
+/* Medium devices (tablets, ≤ 992px) */
+@media (max-width: 992px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding-top: 40px;
+    }
+
+    .home-content {
+        order: 1; /* Content comes first */
+        text-align: center;
+        padding-right: 0;
+        max-width: 100%;
+    }
+
+    .home-image {
+        order: 2; /* Image comes after content */
+        max-width: 280px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .image-wrapper {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        padding-bottom: 0; /* Remove percentage-based padding */
+        margin: 0 auto; /* Center the circle */
+    }
+
+    .profile-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .home-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding-top: 20px; /* Add some top padding */
+    }
+
+    .home-content {
+        text-align: center;
+        padding-right: 0;
+        max-width: 100%;
+    }
+
+    .home-image {
+        max-width: 260px; /* Set a max-width for mobile */
+        margin: 0 auto; /* Center the image */
+        padding-bottom: 10px;
+    }
+
+    .image-wrapper {
+        height: 300px; /* Fixed height for mobile */
+        width: 300px; /* Fixed width for mobile */
+        padding-bottom: 0; /* Remove percentage-based padding */
+    }
+
+    .profile-photo {
+        position: relative; /* Change to relative positioning */
+        height: 100%; /* Fill the container */
+    }
+}
 
 /* EXPERIENCE SECTION */
 #experience {
@@ -2002,37 +2221,6 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    .navbar-container {
-        padding: 0 15px;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background-color: var(--card-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: left 0.3s ease;
-    }
-
-    .nav-links.active {
-        left: 0;
-    }
-
-    .nav-links li {
-        margin: 20px 0;
-    }
-
-    .hamburger {
-        display: block;
-        font-size: 1.5rem;
-    }
 
     .section-title {
         font-size: 2rem;
@@ -2047,7 +2235,12 @@ footer p {
     }
 
     .skills-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .skill-category {
+        padding: 20px 12px;
     }
 
     /* Education Timeline - Single Column Layout */
