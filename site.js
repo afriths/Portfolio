@@ -58,25 +58,6 @@ document.getElementById('successMessageOverlay').addEventListener('click', funct
     this.style.display = 'none';
 });
 
-// Mobile menu toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('fa-times');
-    hamburger.classList.toggle('fa-bars');
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('fa-times');
-        hamburger.classList.add('fa-bars');
-    });
-});
-
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
