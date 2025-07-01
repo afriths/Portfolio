@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,10 +49,10 @@
                     I create innovative digital solutions that bridge technology and user needs, 
                     specializing in web and mobile applications with seamless API integrations.
                 </p>
-                <div class="home-buttons">
+                <!-- <div class="home-buttons">
                     <a href="#contact" class="btn-primary">Contact Me</a>
                     <a href="#about" class="btn-secondary">Learn More</a>
-                </div>
+                </div> -->
             </div>
             
             <div class="home-image">
@@ -511,6 +512,37 @@
     
     // Initial check
     setupScrollIndicator();
+    });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        document.body.appendChild(overlay);
+
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+
+        // Close drawer when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
     });
     </script>
     
