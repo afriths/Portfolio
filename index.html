@@ -1,0 +1,519 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'site.css'%}">
+    <title>AFRITH.S - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "kr9MiGMhIHMcgHN7S",
+        });
+    })();
+    </script>
+</head> 
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#home" class="logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+                
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-container">
+            <div class="home-content">
+                <h1 class="home-title">AFRITH.S</h1>
+                <h2 class="home-subtitle">Application & Full Stack Developer</h2>
+                <p class="home-description">
+                    I create innovative digital solutions that bridge technology and user needs, 
+                    specializing in web and mobile applications with seamless API integrations.
+                </p>
+                <div class="home-buttons">
+                    <a href="#contact" class="btn-primary">Contact Me</a>
+                    <a href="#about" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="home-image">
+                <div class="image-wrapper">
+                    <img src="{% static 'Images/profile.jpg' %}" alt="Afirth.S" class="profile-photo">
+                    <div class="image-overlay"></div>
+                    <div class="image-border"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <span>Scroll down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+    <div class="about-container">
+        <div class="section-header">
+        <h2 class="section-title">About <span class="highlight">Me</span></h2>
+        <p class="section-subtitle">Here's what defines my professional approach</p>
+        </div>
+
+        <div class="about-content">
+        <div class="about-cards">
+            <!-- Card 1 -->
+            <div class="about-card" style="--delay: 0.1s; --card-color: #3B82F6;">
+            <div class="card-header-inline">
+                <div class="card-icon">
+                <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Full Stack Developer</h3>
+            </div>
+            <p>Practical experience in developing web/mobile applications and integrating APIs with focus on clean architecture.</p>
+            <div class="card-hover-effect"></div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="about-card" style="--delay: 0.2s; --card-color: #10B981;">
+            <div class="card-header-inline">
+                <div class="card-icon">
+                <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Performance Focused</h3>
+            </div>
+            <p>Skilled in creating scalable, high-performance solutions with excellent user experience.</p>
+            <div class="card-hover-effect"></div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="about-card" style="--delay: 0.3s; --card-color: #F59E0B;">
+            <div class="card-header-inline">
+                <div class="card-icon">
+                <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Problem Solver</h3>
+            </div>
+            <p>Passionate about building efficient digital products that solve real-world problems effectively.</p>
+            <div class="card-hover-effect"></div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="about-card" style="--delay: 0.4s; --card-color: #8B5CF6;">
+            <div class="card-header-inline">
+                <div class="card-icon">
+                <i class="fas fa-book"></i>
+                </div>
+                <h3>Continuous Learner</h3>
+            </div>
+            <p>Constantly learning and adapting to new technologies and development methodologies.</p>
+            <div class="card-hover-effect"></div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="about-card" style="--delay: 0.5s; --card-color: #EC4899;">
+            <div class="card-header-inline">
+                <div class="card-icon">
+                <i class="fas fa-users"></i>
+                </div>
+                <h3>Team Player</h3>
+            </div>
+            <p>Strong collaborator who thrives in team environments and communicates technical concepts clearly.</p>
+            <div class="card-hover-effect"></div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="about-card" style="--delay: 0.6s; --card-color: #14B8A6;">
+            <div class="card-header-inline">
+                <div class="card-icon">
+                <i class="fas fa-search-plus"></i>
+                </div>
+                <h3>Detail Oriented</h3>
+            </div>
+            <p>Focus on creating seamless user experiences across all platforms with pixel-perfect precision.</p>
+            <div class="card-hover-effect"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- Experience Section -->
+    <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="experience-scroll-wrapper" id="experienceScroll">
+
+        <div class="experience-container">
+        <!-- SUN TV -->
+        <div class="card">
+            <div class="slide slide1">
+            <div class="content">
+                <img src="{% static 'Images/suntv-logo.png' %}" alt="SUN TV Logo" class="company-logo" />
+                <h3 class="company-name">SUN TV Network</h3>
+                <p class="company-role">App Developer Intern</p>
+                <span class="experience-date">Jan 2025 - May 2025</span>
+            </div>
+            </div>
+            <div class="slide slide2">
+            <div class="content">
+                <div class="experience-description">
+                <ul>
+                    <li><i class="fa fa-caret-right"></i> Developed On-Duty App using Flutter and Django</li>
+                    <li><i class="fa fa-caret-right"></i> Tracked approvals, time & attendance</li>
+                    <li><i class="fa fa-caret-right"></i> Built route planning & destination search</li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- DRDO -->
+        <div class="card">
+            <div class="slide slide1">
+            <div class="content">
+                <img src="{% static 'Images/drdo-logo.png' %}" alt="DRDO Logo" class="company-logo" />
+                <h3 class="company-name">LRDE-DRDO</h3>
+                <p class="company-role">Intern</p>
+                <span class="experience-date">May 2024 - July 2024</span>
+            </div>
+            </div>
+            <div class="slide slide2">
+            <div class="content">
+                <div class="experience-description">
+                <ul>
+                    <li><i class="fa fa-caret-right"></i> Designed Waveguides & Power Dividers using HFSS</li>
+                    <li><i class="fa fa-caret-right"></i> Specialized in X-band coaxial groove gap divider</li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- EMERTXE -->
+        <div class="card">
+            <div class="slide slide1">
+            <div class="content">
+                <img src="{% static 'Images/emertxe-logo.png' %}" alt="EMERTXE Logo" class="company-logo" />
+                <h3 class="company-name">EMERTXE</h3>
+                <p class="company-role">Intern</p>
+                <span class="experience-date">March 2023 - May 2023</span>
+            </div>
+            </div>
+            <div class="slide slide2">
+            <div class="content">
+                <div class="experience-description">
+                <ul>
+                    <li><i class="fa fa-caret-right"></i> IoT-Based Home Automation Project</li>
+                    <li><i class="fa fa-caret-right"></i> Simulated lighting, temperature & water tank logic</li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    <!-- Scroll Indicator Bar -->
+    <div class="scroll-indicator-container">
+        <div class="scroll-track">
+        <div class="scroll-thumb"></div>
+        </div>
+    </div>
+    </section>
+
+
+
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3 class="skill-category-title">Programming</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">Python</li>
+                    <li class="skill-item">C Programming</li>
+                    <li class="skill-item">JavaScript</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3 class="skill-category-title">Web Development</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">HTML & CSS</li>
+                    <li class="skill-item">Django</li>
+                    <li class="skill-item">REST APIs</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3 class="skill-category-title">App Development</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">Flutter</li>
+                    <li class="skill-item">Dart</li>
+                    <li class="skill-item">Mobile UI/UX</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3 class="skill-category-title">Databases</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">PostgreSQL</li>
+                    <li class="skill-item">MS SQL</li>
+                    <li class="skill-item">ORM</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3 class="skill-category-title">Design</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">Figma</li>
+                    <li class="skill-item">UI/UX Design</li>
+                    <li class="skill-item">Prototyping</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <div class="skill-icon"><i class="fas fa-tools"></i></div>
+                <h3 class="skill-category-title">Other</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">JSON</li>
+                    <li class="skill-item">HFSS</li>
+                    <li class="skill-item">IOT</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-timeline">
+            <div class="education-item">
+                <div class="education-dot"></div>
+                <div class="education-content">
+                    <h3 class="education-title">B.Tech in Electronics and Communication Engineering</h3>
+                    <p class="education-institution">Indian Institute of Information Technology, Tiruchirappalli</p>
+                    <p class="education-date">2021 - 2025</p>
+                    <p class="education-grade">CGPA: 9.0</p>
+                </div>
+            </div>
+            <div class="education-item">
+                <div class="education-dot"></div>
+                <div class="education-content">
+                    <h3 class="education-title">XII (Senior Secondary)</h3>
+                    <p class="education-institution">Asian Christian High School, Hosur</p>
+                    <p class="education-date">2020 - 2021</p>
+                    <p class="education-grade">Percentage: 95.4%</p>
+                </div>
+            </div>
+            <div class="education-item">
+                <div class="education-dot"></div>
+                <div class="education-content">
+                    <h3 class="education-title">X (Secondary)</h3>
+                    <p class="education-institution">Asian Christian High School, Hosur</p>
+                    <p class="education-date">2018 - 2019</p>
+                    <p class="education-grade">Percentage: 95.6%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Contact Section -->
+<section id="contact">
+    <div class="contact-header">
+        <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+        <p class="section-subtitle">I'd love to hear from you! Send me a message below.</p>
+    </div>
+    
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="contact-detail">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="contact-detail-content">
+                    <h4>Address</h4>
+                    <p>2/412 A, 1st Cross</p>
+                    <p>VOC Nagar, Basthi</p>
+                    <p>Hosur - 635109, Tamil Nadu</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <div class="contact-detail-content">
+                    <h4>Phone</h4>
+                    <p>+91 6374882260</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div class="contact-detail-content">
+                    <h4>Email</h4>
+                    <p>afriths874@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-social">
+                <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <form id="contactForm"  onsubmit="return sendMail(event)">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                    <i class="fas fa-user input-icon"></i>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                    <i class="fas fa-envelope input-icon"></i>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="subject" name="subject" required placeholder="Subject">
+                    <i class="fas fa-tag input-icon"></i> <!-- Icon for subject -->
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                    <i class="fas fa-pencil-alt input-icon"></i>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Add this right before the closing </body> tag -->
+        <div id="successMessageOverlay" class="success-message-overlay"></div>
+
+        <!-- Update your success message div -->
+        <div id="successMessage" class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for reaching out. I'll get back to you soon.</p>
+            <button id="closeSuccess" class="close-btn">Close</button>
+        </div>   
+
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 AFRITH.S. All rights reserved.</p>
+            <p class="copyright">Designed and built with ❤️ by AFRITH.S</p>
+        </div>
+    </footer>
+    
+    <script src="{% static 'site.js' %}"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const scrollWrapper = document.getElementById('experienceScroll');
+    const scrollTrack = document.querySelector('.scroll-track');
+    const scrollThumb = document.querySelector('.scroll-thumb');
+    
+    if (!scrollWrapper || !scrollTrack || !scrollThumb) return;
+    
+    let isDragging = false;
+    
+    // Update thumb position based on scroll
+    function updateThumbPosition() {
+        const scrollableWidth = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+        const scrollPosition = scrollWrapper.scrollLeft;
+        const trackWidth = scrollTrack.offsetWidth - scrollThumb.offsetWidth;
+        
+        const thumbPosition = (scrollPosition / scrollableWidth) * trackWidth;
+        scrollThumb.style.transform = `translateX(${thumbPosition}px)`;
+    }
+    
+    // Handle thumb dragging
+    scrollThumb.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        document.body.style.cursor = 'grabbing';
+        scrollThumb.style.cursor = 'grabbing';
+        e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        
+        const trackRect = scrollTrack.getBoundingClientRect();
+        const trackWidth = scrollTrack.offsetWidth;
+        const thumbWidth = scrollThumb.offsetWidth;
+        const scrollableWidth = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+        
+        let newLeft = e.clientX - trackRect.left - (thumbWidth / 2);
+        
+        // Constrain to track boundaries
+        newLeft = Math.max(0, Math.min(newLeft, trackWidth - thumbWidth));
+        
+        const scrollPosition = (newLeft / (trackWidth - thumbWidth)) * scrollableWidth;
+        scrollWrapper.scrollLeft = scrollPosition;
+    });
+    
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        document.body.style.cursor = '';
+        scrollThumb.style.cursor = 'grab';
+    });
+    
+    // Handle track clicking
+    scrollTrack.addEventListener('click', (e) => {
+        const trackRect = scrollTrack.getBoundingClientRect();
+        const thumbWidth = scrollThumb.offsetWidth;
+        const scrollableWidth = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+        
+        const clickPosition = e.clientX - trackRect.left - (thumbWidth / 2);
+        const trackWidth = scrollTrack.offsetWidth - thumbWidth;
+        
+        const scrollPosition = (clickPosition / trackWidth) * scrollableWidth;
+        scrollWrapper.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+        });
+    });
+    
+    // Update on scroll
+    scrollWrapper.addEventListener('scroll', updateThumbPosition);
+    
+    // Initial setup
+    function setupScrollIndicator() {
+        const hasHorizontalScroll = scrollWrapper.scrollWidth > scrollWrapper.clientWidth;
+        scrollTrack.style.display = hasHorizontalScroll ? 'block' : 'none';
+        
+        if (hasHorizontalScroll) {
+        updateThumbPosition();
+        }
+    }
+    
+    // Check on resize
+    window.addEventListener('resize', setupScrollIndicator);
+    
+    // Initial check
+    setupScrollIndicator();
+    });
+    </script>
+    
+</body>
+</html>
