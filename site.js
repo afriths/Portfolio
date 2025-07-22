@@ -5,17 +5,17 @@ function sendMail(event) {
     
     if (isSending) return false;
     
-    const submitBtn = event.target.querySelector('.submit-btn');
-    const btnText = submitBtn.querySelector('.btn-text');
+    const submitBtn = event.target.querySelector('.send-message-btn');
     
     // Store original button state
-    const originalBtnText = btnText.textContent;
     const originalBtnHTML = submitBtn.innerHTML;
     
     // Update button to loading state
     submitBtn.disabled = true;
-    btnText.textContent = 'Sending...';
     isSending = true;
+    
+    // Update button text to show loading
+    submitBtn.querySelector('.button-text').textContent = 'Sending...';
 
     let params = {
         name: document.getElementById("name").value,
@@ -27,35 +27,41 @@ function sendMail(event) {
     emailjs.send("service_z9bzkh3", "template_6x9x10n", params)
         .then(function() {
             // Show success message
+            document.getElementById('successOverlay').style.display = 'block';
             document.getElementById('successMessage').style.display = 'flex';
-            document.getElementById('successMessageOverlay').style.display = 'block';
+            
+            // Animate success icon
+            setTimeout(() => {
+                document.querySelector('.success-message').classList.add('active');
+                document.getElementById('successOverlay').style.opacity = '1';
+            }, 10);
+            
             // Reset form only on success
             document.getElementById('contactForm').reset();
         })
         .catch(function(error) {
             console.error('EmailJS Error:', error);
-            // Don't show alert if we're going to show success anyway
-            // Just reset the button state
+            alert('Failed to send message. Please try again later.');
         })
         .finally(function() {
-            // Always reset button state
+            // Reset button state
             submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnHTML;
+            submitBtn.querySelector('.button-text').textContent = 'Send Message';
             isSending = false;
         });
     
     return false;
 }
 
-// Close handlers
+// Add event listener for closing success message
 document.getElementById('closeSuccess').addEventListener('click', function() {
-    document.getElementById('successMessage').style.display = 'none';
-    document.getElementById('successMessageOverlay').style.display = 'none';
-});
-
-document.getElementById('successMessageOverlay').addEventListener('click', function() {
-    document.getElementById('successMessage').style.display = 'none';
-    this.style.display = 'none';
+    document.querySelector('.success-message').classList.remove('active');
+    document.getElementById('successOverlay').style.opacity = '0';
+    
+    setTimeout(() => {
+        document.getElementById('successOverlay').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'none';
+    }, 300);
 });
 
 // Smooth scrolling for anchor links
@@ -101,63 +107,63 @@ if (homeContent) {
     observer.observe(homeContent);
 }
 
-// Theme toggle functionality
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = themeToggle.querySelector('i');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+// // Theme toggle functionality
+// const themeToggle = document.getElementById('themeToggle');
+// const themeIcon = themeToggle.querySelector('i');
+// const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Initialize theme
-function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme');
+// // Initialize theme
+// function initializeTheme() {
+//     const savedTheme = localStorage.getItem('theme');
     
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateToggleIcon(savedTheme);
-    } else if (prefersDarkScheme.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        updateToggleIcon('dark');
-    }
-}
+//     if (savedTheme) {
+//         document.documentElement.setAttribute('data-theme', savedTheme);
+//         updateToggleIcon(savedTheme);
+//     } else if (prefersDarkScheme.matches) {
+//         document.documentElement.setAttribute('data-theme', 'dark');
+//         updateToggleIcon('dark');
+//     }
+// }
 
-// Update the toggle icon
-function updateToggleIcon(theme) {
-    if (theme === 'dark') {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-    } else {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-    }
-}
+// // Update the toggle icon
+// function updateToggleIcon(theme) {
+//     if (theme === 'dark') {
+//         themeIcon.classList.remove('fa-moon');
+//         themeIcon.classList.add('fa-sun');
+//     } else {
+//         themeIcon.classList.remove('fa-sun');
+//         themeIcon.classList.add('fa-moon');
+//     }
+// }
 
-// Toggle theme
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    let newTheme = 'light';
+// // Toggle theme
+// function toggleTheme() {
+//     const currentTheme = document.documentElement.getAttribute('data-theme');
+//     let newTheme = 'light';
     
-    if (currentTheme !== 'dark') {
-        newTheme = 'dark';
-    }
+//     if (currentTheme !== 'dark') {
+//         newTheme = 'dark';
+//     }
     
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateToggleIcon(newTheme);
-}
+//     document.documentElement.setAttribute('data-theme', newTheme);
+//     localStorage.setItem('theme', newTheme);
+//     updateToggleIcon(newTheme);
+// }
 
-// Initialize theme on page load
-initializeTheme();
+// // Initialize theme on page load
+// initializeTheme();
 
-// Add event listener for theme toggle
-themeToggle.addEventListener('click', toggleTheme);
+// // Add event listener for theme toggle
+// themeToggle.addEventListener('click', toggleTheme);
 
-// Watch for system theme changes
-prefersDarkScheme.addListener((e) => {
-    if (!localStorage.getItem('theme')) {
-        const newTheme = e.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        updateToggleIcon(newTheme);
-    }
-});
+// // Watch for system theme changes
+// prefersDarkScheme.addListener((e) => {
+//     if (!localStorage.getItem('theme')) {
+//         const newTheme = e.matches ? 'dark' : 'light';
+//         document.documentElement.setAttribute('data-theme', newTheme);
+//         updateToggleIcon(newTheme);
+//     }
+// });
 
 // Dynamic navbar background on scroll
 window.addEventListener('scroll', function() {
@@ -227,20 +233,6 @@ if (experienceContainer) {
 if (document.querySelector('.experience-scroll')) {
     document.querySelector('.experience-scroll').scrollLeft = 0;
 }
-
-// Add hover effect to education items
-const educationItems = document.querySelectorAll('.education-item');
-educationItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'translateY(-5px)';
-        item.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
-    });
-    
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'translateY(0)';
-        item.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-    });
-});
 
 // Add click animation to skill categories
 const skillCategories = document.querySelectorAll('.skill-category');
@@ -341,5 +333,45 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactInfo) contactObserver.observe(contactInfo);
     if (contactFormEl) contactObserver.observe(contactFormEl);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Card toggle functionality
+    const toggles = document.querySelectorAll('.rad-content-grid-card__front-toggle');
+    
+    toggles.forEach(toggle => {
+        toggle.addEventListener('change', function() {
+            const card = this.closest('.rad-content-grid-card');
+            
+            // Close other open cards when opening a new one
+            if (this.checked) {
+                document.querySelectorAll('.rad-content-grid-card--open').forEach(openCard => {
+                    if (openCard !== card) {
+                        openCard.classList.remove('rad-content-grid-card--open');
+                        openCard.querySelector('.rad-content-grid-card__front-toggle').checked = false;
+                        openCard.querySelector('.rad-content-grid-card__front-toggle').setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            
+            card.classList.toggle('rad-content-grid-card--open', this.checked);
+            this.setAttribute('aria-expanded', this.checked.toString());
+        });
+    });
+
+    // Scroll indicator functionality
+    const scrollContainer = document.querySelector('.experience-container');
+    const scrollThumb = document.querySelector('.scroll-thumb');
+    
+    if (scrollContainer && scrollThumb) {
+        scrollContainer.addEventListener('scroll', function() {
+            const scrollPercentage = scrollContainer.scrollLeft / 
+                (scrollContainer.scrollWidth - scrollContainer.clientWidth);
+            const thumbPosition = scrollPercentage * 
+                (this.clientWidth - scrollThumb.clientWidth);
+            scrollThumb.style.transform = `translateX(${thumbPosition}px)`;
+        });
+    }
+});
+
 
 
